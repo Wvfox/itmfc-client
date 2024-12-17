@@ -1,0 +1,60 @@
+@import '@/styles/vars';
+
+.helpdesk {
+	padding: 20px 30px 0 10px;
+	display: grid;
+	grid-template-columns: 2fr 5fr;
+}
+.selectData {
+	&__items {
+		display: flex;
+		gap: 4px;
+	}
+}
+.section {
+	animation: show_section 0.7s ease;
+	display: none;
+	&_show {
+		display: block;
+	}
+	&__container {
+		display: flex;
+		flex-direction: column;
+	}
+	&__header {
+		padding: 0 20px 20px;
+		text-align: center;
+		font-size: 32px;
+	}
+	&__body {
+		display: flex;
+		gap: 20px;
+	}
+	&__btn {
+		flex: 1 0 auto;
+		min-width: 50%;
+		padding: 20px 40px;
+		border-radius: 10px;
+		border: 2px solid $primary-base;
+		font-size: 32px;
+		background-color: rgba($additional-dark-base, 0.1);
+		transition: all 0.3s ease;
+		&:hover {
+			border-color: $select;
+			background-color: rgba($additional-dark-base, 0.5);
+			color: $select;
+		}
+	}
+}
+@keyframes show_section {
+	0% {
+		display: block;
+		opacity: 0;
+		visibility: hidden;
+	}
+	100% {
+		display: block;
+		opacity: 1;
+		visibility: visible;
+	}
+}
