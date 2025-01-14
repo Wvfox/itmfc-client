@@ -61,7 +61,7 @@ export default function Publish({ tab }) {
 					setTimeout(() => {
 						clipPlayer(order + 1, list, status)
 					}, list[order]['duration'] * 1000)
-				}, 2000)
+				}, 2_000)
 			})
 			.catch(rejected => {
 				catchErrorPlayer(rejected)

@@ -3,3 +3,4 @@
 **/yarn.lock
 **.log
 **/.env
+**/package-lock.json
