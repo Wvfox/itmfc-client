@@ -1,1 +1,1 @@
-export const SERVER_URL = process.env.SERVER_API
+export const SERVER_URL = 'https://api.itmfc.ru/api'
