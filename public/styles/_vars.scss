@@ -1,9 +1,16 @@
 $white: #fff;
 $black: #000;
 $gray: #333333;
+$gray-light-sm: lighten($gray, 30%);
+$gray-light-base: lighten($gray, 40%);
+$gray-light-lg: lighten($gray, 70%);
 
 $primary-base: #f58b00;
+$primary-light: lighten($primary-base, 49%);
 $select: #472901;
 $additional-base: #fffdfa;
 $additional-light-base: lighten($additional-base, 10%);
+$additional-dark-sm: darken($additional-base, 12%);
 $additional-dark-base: darken($additional-base, 30%);
+
+$border-radius: 6px;
