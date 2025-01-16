@@ -2,17 +2,22 @@ import { useForm } from "react-hook-form";
 import Layout from "shared/Layout/Layout";
 import styles from '../Publish.module.scss'
 import { useEffect, useState } from "react";
+import usePublish from "../usePublish";
 
 export default function UploadPublish({tab}) {
-    const { register, handleSubmit, setFocus } = useForm()
+    const { register, handleSubmit, setFocus, reset } = useForm()
+    const {createClipAsync} = usePublish()
     const [fileSrc, setFileSrc] = useState('')
     const [fileName, setFileName] = useState('Выберите файл')
 
 
-    const onSubmit = (data) => {
-        data = {...data, 'expiration_date': `${data['year']}-${data['month']}-${data['day']}`}
-        // console.log(data);
-
+    const onCreate = (data) => {
+        data = {...data, 'expiration_date': `${data['year']}-${data['month']}-${data['day']}`, 'media': data['media'][0]}
+        console.log(data);
+		createClipAsync(data);
+        reset()
+        setFileSrc('')
+        setFileName('Выберите файл')
     }
     const handleFile = (e) => {
           // Получение файла
@@ -53,20 +58,20 @@ export default function UploadPublish({tab}) {
 
     return (
         <Layout tab={tab} title='Загрузка видео'>
-            <form className={styles.form} onSubmit={handleSubmit(onSubmit)} >
+            <form className={styles.form} onSubmit={handleSubmit(onCreate)} encType="multipart/form-data" >
 
             {/* Название */}
             <label className={styles.field}>
                 <h4 className={styles.field__title}>Title</h4>
-                <input {...register('name')} type='text' />
+                <input {...register('name')} type='text' autoComplete="off"/>
             </label>
 
             {/* Срок действия */}
             <div className={styles.period}>
                 <h4 className={styles.field__title}>Период действия</h4>
-                <input {...register('day')} type='text' onChange={e => onChangeDay(e)} />
-                <input {...register('month')} type='text' onChange={e => onChangeMonth(e)}/>
-                <input {...register('year')} type='text'onChange={e => onChangeYear(e)} />
+                <input {...register('day')} type='text' onChange={e => onChangeDay(e)} autoComplete="off"/>
+                <input {...register('month')} type='text' onChange={e => onChangeMonth(e)} autoComplete="off"/>
+                <input {...register('year')} type='text'onChange={e => onChangeYear(e)} autoComplete="off"/>
             </div>
 
             {/* Файл */}

@@ -6,17 +6,16 @@ export default function usePublish() {
 	// 	select: ({ data }) => data,
 	// })
 
-	const { mutatedAsync: createClipAsync } = useMutation('create clip', data =>
-		PublishService.createClip(data).then(data => {
-			if (200 <= data.status < 300) {
-				queryData.refetch()
-				focusManager.setFocused(undefined)
-				focusManager.setFocused(true)
-			}
+	const { mutateAsync: createClipAsync } = useMutation('create clip publish', data =>
+		PublishService.createClip(data).then(response => {
+			
 		})
 	)
 
+	
+
 	return {
-		queryData,
+		// queryData,
+		createClipAsync,
 	}
 }

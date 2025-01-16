@@ -36,17 +36,27 @@ export const PublishService = {
 	},
 	async createClip(data) {
 		return axios
-			.post(`${PUBLISH_URL}/`, data)
+			.post(`${PUBLISH_URL}/`, data, {
+				headers: {
+					'Content-Type': 'multipart/form-data'
+				}
+			})
 			.then(response => {
+				console.log(response);				
 				return response
 			})
 			.catch(error => {
+				console.log(error);				
 				return error.response
 			})
 	},
 	async editClip(id, data) {
 		return axios
-			.put(`${PUBLISH_URL}/elem/${id}`, data)
+			.put(`${PUBLISH_URL}/elem/${id}`, data, {
+				headers: {
+					'Content-Type': 'multipart/form-data'
+				}
+			})
 			.then(response => {
 				return response
 			})
