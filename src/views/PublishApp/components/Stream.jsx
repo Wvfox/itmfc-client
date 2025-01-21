@@ -1,13 +1,13 @@
+import cn from 'classnames'
 import { SERVER_URL } from 'config/constants'
 import { useEffect, useState } from 'react'
 import { PublishService } from 'services/Publish.service'
 import Meta from 'shared/Meta/Meta'
 import styles from '../Publish.module.scss'
-import cn from 'classnames'
 
 export default function StreamPublish({ tab, area }) {
 	const [currentClip, setCurrentClip] = useState('')
-	const [isChange, setisChange] = useState(true)
+	const [isChange, setIsChange] = useState(true)
 
 	const catchErrorPlayer = rejected => {
 		setCurrentClip('')
@@ -15,7 +15,7 @@ export default function StreamPublish({ tab, area }) {
 	}
 	const startClipPlayer = () => {
 		// Включение заставки
-		setisChange(true)
+		setIsChange(true)
 		let status = 'main'
 		// Получение актуального списка с сервера
 		PublishService.getAllClipsShuffle()
@@ -28,9 +28,9 @@ export default function StreamPublish({ tab, area }) {
 			})
 	}
 	const clipPlayer = (order, list, status) => {
-		try {		
+		try {
 			// Включение заставки
-			setisChange(true)
+			setIsChange(true)
 			PublishService.checkNonstopClip(area)
 				.then(resolve => {
 					// ===== Флаги =====
@@ -56,22 +56,27 @@ export default function StreamPublish({ tab, area }) {
 						return
 					}
 					// ===== Основное тело функции =====
-					// console.log('play')				
+					// console.log('play')
 					// Установка ссылки для подкачки
 					setCurrentClip(list[order]['media'])
 					// Запуск видео после заставки
 					setTimeout(() => {
 						// Выключение заставки
-						setisChange(false)
+						setIsChange(false)
 						// Запуск ролика
-						document.querySelector('#videoClip').play()
+						try {
+							document.querySelector('#videoClip').play()
+						} catch {
+							PublishService.wrongClip(list[order]['id'])
+							location.reload()
+						}
 						// Запуск следующего ролика после окончания ролика
 						setTimeout(() => {
 							clipPlayer(order + 1, list, status)
 						}, list[order]['duration'] * 1000)
 						// Включение заставки до окончания видео
 						setTimeout(() => {
-							setisChange(true)
+							setIsChange(true)
 						}, list[order]['duration'] * 1000 - 500)
 					}, 4_000)
 				})
@@ -79,11 +84,9 @@ export default function StreamPublish({ tab, area }) {
 					catchErrorPlayer(rejected)
 					return
 				})
-			}
-		catch {
+		} catch {
 			location.reload()
 		}
-
 	}
 
 	// Первая загрузка страницы
@@ -100,7 +103,12 @@ export default function StreamPublish({ tab, area }) {
 					src={`${SERVER_URL}/file/${currentClip}`}
 					className={styles.stream__clip}
 				/>
-				<img src='/images/logo.jpg' className={cn(styles.stream__logo, {[styles.stream__logo_show]: isChange})}/>
+				<img
+					src='/images/logo.jpg'
+					className={cn(styles.stream__logo, {
+						[styles.stream__logo_show]: isChange,
+					})}
+				/>
 			</main>
 		</Meta>
 	)

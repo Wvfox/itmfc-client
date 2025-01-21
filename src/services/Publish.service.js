@@ -26,7 +26,7 @@ export const PublishService = {
 	},
 	async getClip(id) {
 		return axios
-			.get(`${PUBLISH_URL}/elem/${id}`)
+			.get(`${PUBLISH_URL}/clip/${id}`)
 			.then(response => {
 				return response
 			})
@@ -50,7 +50,7 @@ export const PublishService = {
 	},
 	async editClip(id, data) {
 		return axios
-			.put(`${PUBLISH_URL}/elem/${id}`, data, {
+			.put(`${PUBLISH_URL}/clip/${id}`, data, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},
@@ -64,7 +64,7 @@ export const PublishService = {
 	},
 	async removeClip(id) {
 		return axios
-			.delete(`${PUBLISH_URL}/elem/${id}`)
+			.delete(`${PUBLISH_URL}/clip/${id}`)
 			.then(response => {
 				return response
 			})
@@ -72,10 +72,19 @@ export const PublishService = {
 				return error.response
 			})
 	},
-
 	async checkNonstopClip(location) {
 		return axios
 			.get(`${PUBLISH_URL}/nonstop/${location}`)
+			.then(response => {
+				return response
+			})
+			.catch(error => {
+				return error.response
+			})
+	},
+	async wrongClip(id) {
+		return axios
+			.put(`${PUBLISH_URL}/clip/${id}/wrong`)
 			.then(response => {
 				return response
 			})
