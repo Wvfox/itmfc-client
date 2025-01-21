@@ -38,15 +38,13 @@ export const PublishService = {
 		return axios
 			.post(`${PUBLISH_URL}/`, data, {
 				headers: {
-					'Content-Type': 'multipart/form-data'
-				}
+					'Content-Type': 'multipart/form-data',
+				},
 			})
 			.then(response => {
-				console.log(response);				
 				return response
 			})
 			.catch(error => {
-				console.log(error);				
 				return error.response
 			})
 	},
@@ -54,8 +52,8 @@ export const PublishService = {
 		return axios
 			.put(`${PUBLISH_URL}/elem/${id}`, data, {
 				headers: {
-					'Content-Type': 'multipart/form-data'
-				}
+					'Content-Type': 'multipart/form-data',
+				},
 			})
 			.then(response => {
 				return response

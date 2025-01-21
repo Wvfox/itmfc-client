@@ -1,5 +1,7 @@
 @import 'vars';
 
+@import '/node_modules/react-redux-toastr/src/styles/index';
+
 /* Обнуление */
 
 *,
@@ -65,4 +67,15 @@ body {
 }
 button {
 	color: #333;
+}
+
+/* Scrollbar */
+
+*::-webkit-scrollbar {
+	width: 8px;
+	background-color: transparent;
+}
+*::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: $primary-base;
 }

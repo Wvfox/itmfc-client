@@ -9,6 +9,7 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@reduxjs/toolkit": "^2.5.0",
 		"axios": "^1.7.7",
 		"classnames": "^2.5.1",
 		"next": "14.2.8",
@@ -16,6 +17,8 @@
 		"react-dom": "^18",
 		"react-hook-form": "^7.54.2",
 		"react-query": "^3.39.3",
+		"react-redux": "^9.2.0",
+		"react-redux-toastr": "^8.0.0",
 		"sass": "^1.80.3"
 	}
 }
