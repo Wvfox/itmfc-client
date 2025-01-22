@@ -11,7 +11,8 @@ export default function StreamPublish({ tab, area }) {
 
 	const catchErrorPlayer = rejected => {
 		setCurrentClip('')
-		console.log(`rejected - ${rejected}`)
+		// console.log(`rejected - ${rejected}`)
+		location.reload()
 	}
 	const startClipPlayer = () => {
 		// Включение заставки
@@ -28,70 +29,65 @@ export default function StreamPublish({ tab, area }) {
 			})
 	}
 	const clipPlayer = (order, list, status) => {
-		try {
-			// Включение заставки
-			setIsChange(true)
-			PublishService.checkNonstopClip(area)
-				.then(resolve => {
-					// ===== Флаги =====
-					if (
-						// Переход main -> nonstop
-						(resolve?.data.length && status !== 'nonstop') ||
-						// Последний элемент цикла nonstop
-						(resolve?.data.length &&
-							status === 'nonstop' &&
-							order === list.length)
-					) {
-						status = 'nonstop'
-						clipPlayer(0, resolve.data, status)
-						return
-					}
-					if (
-						// Переход nonstop -> main
-						(!resolve?.data.length && status == 'nonstop') ||
-						// Последний элемент цикла main
-						(order === list.length && status === 'main')
-					) {
-						startClipPlayer()
-						return
-					}
-					// ===== Основное тело функции =====
-					// console.log('play')
-					// Установка ссылки для подкачки
-					console.log(`set-clip - ${list[order]['media']}`)
-					setCurrentClip(list[order]['media'])
-					// Запуск видео после заставки
-					setTimeout(() => {
-						// Выключение заставки
-						setIsChange(false)
-						// Запуск ролика
-						try {
-							console.log(`play - ${list[order]['id']}`)
-							document.querySelector('#videoClip').play()
-						} catch (e) {
-							console.log(e)
-							console.log(`wrong - ${list[order]['id']}`)
+		// Включение заставки
+		setIsChange(true)
+		PublishService.checkNonstopClip(area)
+			.then(resolve => {
+				// ===== Флаги =====
+				if (
+					// Переход main -> nonstop
+					(resolve?.data.length && status !== 'nonstop') ||
+					// Последний элемент цикла nonstop
+					(resolve?.data.length &&
+						status === 'nonstop' &&
+						order === list.length)
+				) {
+					status = 'nonstop'
+					clipPlayer(0, resolve.data, status)
+					return
+				}
+				if (
+					// Переход nonstop -> main
+					(!resolve?.data.length && status == 'nonstop') ||
+					// Последний элемент цикла main
+					(order === list.length && status === 'main')
+				) {
+					startClipPlayer()
+					return
+				}
+				// ===== Основное тело функции =====
+				// console.log('play')
+				// Установка ссылки для подкачки
+				// console.log(`set-clip - ${list[order]['media']}`)
+				setCurrentClip(list[order]['media'])
+				// Запуск видео после заставки
+				setTimeout(() => {
+					// Выключение заставки
+					setIsChange(false)
+					// Запуск ролика
+					// console.log(`play - ${list[order]['id']}`)
+					document
+						.querySelector('#videoClip')
+						.play()
+						.catch(error => {
+							// console.log(`wrong - ${list[order]['id']}`)
 							PublishService.wrongClip(list[order]['id'])
 							location.reload()
-						}
-						// Запуск следующего ролика после окончания ролика
-						setTimeout(() => {
-							clipPlayer(order + 1, list, status)
-						}, list[order]['duration'] * 1000)
-						// Включение заставки до окончания видео
-						setTimeout(() => {
-							setIsChange(true)
-						}, list[order]['duration'] * 1000 - 500)
-					}, 4_000)
-				})
-				.catch(rejected => {
-					catchErrorPlayer(rejected)
-					return
-				})
-		} catch {
-			console.log(`clip-catch`)
-			location.reload()
-		}
+						})
+					// Запуск следующего ролика после окончания ролика
+					setTimeout(() => {
+						clipPlayer(order + 1, list, status)
+					}, list[order]['duration'] * 1000)
+					// Включение заставки до окончания видео
+					setTimeout(() => {
+						setIsChange(true)
+					}, list[order]['duration'] * 1000 - 500)
+				}, 4_000)
+			})
+			.catch(rejected => {
+				catchErrorPlayer(rejected)
+				return
+			})
 	}
 
 	// Первая загрузка страницы
