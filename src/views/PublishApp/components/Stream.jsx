@@ -58,6 +58,7 @@ export default function StreamPublish({ tab, area }) {
 					// ===== Основное тело функции =====
 					// console.log('play')
 					// Установка ссылки для подкачки
+					console.log(`set-clip - ${list[order]['media']}`)
 					setCurrentClip(list[order]['media'])
 					// Запуск видео после заставки
 					setTimeout(() => {
