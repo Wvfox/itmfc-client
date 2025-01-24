@@ -94,7 +94,7 @@ export const PublishService = {
 	},
 	async checkLocalClip(id) {
 		return axios
-			.get(`http://localhost:3000/publish/clip-status/${id}`)
+			.get(`http://localhost:3000/api/clip/${id}`)
 			.then(response => {
 				// console.log(response)
 				return response
