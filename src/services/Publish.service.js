@@ -92,9 +92,9 @@ export const PublishService = {
 				return error.response
 			})
 	},
-	async checkLocalClip(name) {
+	async checkLocalClip(id) {
 		return axios
-			.get(`http://localhost:3000/clips/${name}`)
+			.get(`http://localhost:3000/publish/clip-status/${id}`)
 			.then(response => {
 				// console.log(response)
 				return response

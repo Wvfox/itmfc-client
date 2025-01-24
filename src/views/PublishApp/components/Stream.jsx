@@ -58,38 +58,38 @@ export default function StreamPublish({ tab, area }) {
 					return
 				}
 				// ===== Основное тело функции =====
-				// console.log('play')
 				// Установка ссылки для подкачки
 				// console.log(`set-clip - ${list[order]['media']}`)
-				setCurrentClip(list[order]['media'])
+				setCurrentClip(`${SERVER_URL}/file/${list[order]['media']}`)
 				// Проверка наличия файла локально
-				PublishService.checkLocalClip(list[order]['media'].split('/')[4]).then(
-					response => {
-						// Если видео есть локально
-						if (response.status === 200) {
-							setCurrentClip(`/clips/${list[order]['media'].split('/')[4]}`)
-						}
-						// Если видео нету локально
-						if (response.status === 404) {
-							// Передача ссылки clip-uploader для скачивания видео
-							downloadFile(
-								list[order]['media'],
-								list[order]['id'],
-								'text/plain'
-							)
-						}
+				PublishService.checkLocalClip(list[order]['id']).then(response => {
+					// Если видео есть локально
+					if (response.status === 200) {
+						console.log(
+							`Find local clip - ${list[order]['media'].split('/')[4]}`
+						)
+						setCurrentClip(`/clips/${list[order]['media'].split('/')[4]}`)
 					}
-				)
+					// Если видео нету локально
+					if (response.status === 404) {
+						// Передача ссылки clip-uploader для скачивания видео
+						console.log(
+							`download - ${list[order]['id']} - ${list[order]['media']}`
+						)
+						downloadFile(list[order]['media'], list[order]['id'], 'text/plain')
+					}
+				})
 				// Запуск видео после заставки
 				setTimeout(() => {
 					// Выключение заставки
 					setIsChange(false)
 					// Запуск ролика
-					// console.log(`play - ${list[order]['id']}`)
+					console.log(`play - ${list[order]['id']}`)
 					document
 						.querySelector('#videoClip')
 						.play()
 						.catch(error => {
+							// console.log(error)
 							// console.log(`wrong - ${list[order]['id']}`)
 							PublishService.wrongClip(list[order]['id'])
 							location.reload()
@@ -121,7 +121,7 @@ export default function StreamPublish({ tab, area }) {
 				<video
 					id='videoClip'
 					muted
-					src={`${SERVER_URL}/file/${currentClip}`}
+					src={currentClip}
 					className={styles.stream__clip}
 				/>
 				<img

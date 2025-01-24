@@ -5,6 +5,7 @@
 **/.env
 **/package-lock.json
 **/.next
+**/.idea
 **/kiosk.**
 
 **/public/clips/*.*
