@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react'
 import { PublishService } from 'services/Publish.service'
 import Meta from 'shared/Meta/Meta'
 import styles from '../Publish.module.scss'
+import usePublish from '../usePublish'
 
 export default function StreamPublish({ tab, area }) {
+	const { downloadFile } = usePublish()
 	const [currentClip, setCurrentClip] = useState('')
 	const [isChange, setIsChange] = useState(true)
 
@@ -60,6 +62,24 @@ export default function StreamPublish({ tab, area }) {
 				// Установка ссылки для подкачки
 				// console.log(`set-clip - ${list[order]['media']}`)
 				setCurrentClip(list[order]['media'])
+				// Проверка наличия файла локально
+				PublishService.checkLocalClip(list[order]['media'].split('/')[4]).then(
+					response => {
+						// Если видео есть локально
+						if (response.status === 200) {
+							setCurrentClip(`/clips/${list[order]['media'].split('/')[4]}`)
+						}
+						// Если видео нету локально
+						if (response.status === 404) {
+							// Передача ссылки clip-uploader для скачивания видео
+							downloadFile(
+								list[order]['media'],
+								list[order]['id'],
+								'text/plain'
+							)
+						}
+					}
+				)
 				// Запуск видео после заставки
 				setTimeout(() => {
 					// Выключение заставки

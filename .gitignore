@@ -5,3 +5,7 @@
 **/.env
 **/package-lock.json
 **/.next
+**/kiosk.**
+
+**/public/clips/**
+*/public/clip-to-download/**

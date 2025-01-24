@@ -43,6 +43,16 @@ export default function usePublish() {
 			setFileName(e.target.value.split('\\').pop())
 		}
 	}
+	// Функция для скачивания файла
+	const downloadFile = (fileData, fileName, mimeType) => {
+		const blob = new Blob([fileData], { type: mimeType })
+		const link = document.createElement('a')
+		link.href = URL.createObjectURL(blob)
+		link.download = fileName
+		document.body.appendChild(link)
+		link.click()
+		document.body.removeChild(link)
+	}
 	// Функция для создания клипа и отправки запроса
 	const onCreate = data => {
 		data = {
@@ -64,6 +74,7 @@ export default function usePublish() {
 		// queryData,
 		createClipAsync,
 		handleFile,
+		downloadFile,
 		onCreate,
 	}
 }
