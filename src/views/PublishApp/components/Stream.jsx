@@ -13,8 +13,8 @@ export default function StreamPublish({ tab, area }) {
 
 	const catchErrorPlayer = rejected => {
 		setCurrentClip('')
-		// console.log(`rejected - ${rejected}`)
-		location.reload()
+		console.log(`rejected - ${rejected}`)
+		// location.reload()
 	}
 	const startClipPlayer = () => {
 		// Включение заставки
@@ -89,10 +89,10 @@ export default function StreamPublish({ tab, area }) {
 						.querySelector('#videoClip')
 						.play()
 						.catch(error => {
-							// console.log(error)
-							// console.log(`wrong - ${list[order]['id']}`)
+							console.log(error)
+							console.log(`wrong - ${list[order]['id']}`)
 							PublishService.wrongClip(list[order]['id'])
-							location.reload()
+							// location.reload()
 						})
 					// Запуск следующего ролика после окончания ролика
 					setTimeout(() => {
