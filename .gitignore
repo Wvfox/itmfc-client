@@ -7,3 +7,5 @@
 **/.next
 **/kiosk.**
 
+**/public/clips/*.*
+**/public/clip-to-download/*.*
