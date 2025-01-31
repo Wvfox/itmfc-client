@@ -97,7 +97,7 @@ export default function StreamPublish({ tab, area }) {
 					// Запуск следующего ролика после окончания ролика
 					setTimeout(() => {
 						clipPlayer(order + 1, list, status)
-					}, list[order]['duration'] * 1000)
+					}, list[order]['duration'] * 1000 + 2000)
 					// Включение заставки до окончания видео
 					setTimeout(() => {
 						setIsChange(true)
