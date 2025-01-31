@@ -8,6 +8,7 @@ export default function usePublish() {
 	const [fileSrc, setFileSrc] = useState('')
 	const [fileName, setFileName] = useState('Выберите файл')
 	const [isClearUpload, setIsClearUpload] = useState(false)
+	const [isSubmit, setIsSubmit] = useState(false)
 
 	// const queryData = useQuery('Clips list', () => PublishService.getAllClips(), {
 	// 	select: ({ data }) => data,
@@ -24,6 +25,7 @@ export default function usePublish() {
 					toastr.error('Неудача', 'Что-то пошло не так...')
 					console.log(response)
 				}
+				setIsSubmit(false)
 			})
 	)
 	// Функция обработки файла
@@ -55,12 +57,15 @@ export default function usePublish() {
 	}
 	// Функция для создания клипа и отправки запроса
 	const onCreate = data => {
+		sessionStorage.setItem('key_phrase', data['key_phrase'])
 		data = {
 			...data,
 			expiration_date: `${data['year']}-${data['month']}-${data['day']}`,
 			media: data['media'][0],
+			// key: aesEncrypt(data['key_phrase']),
 		}
 		// console.log(data)
+		setIsSubmit(true)
 		createClipAsync(data)
 	}
 
@@ -71,6 +76,7 @@ export default function usePublish() {
 		setFileName,
 		isClearUpload,
 		setIsClearUpload,
+		isSubmit,
 		// queryData,
 		createClipAsync,
 		handleFile,

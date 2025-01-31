@@ -5,7 +5,7 @@ import styles from '../Publish.module.scss'
 import usePublish from '../usePublish'
 
 export default function UploadPublish({ tab }) {
-	const { register, handleSubmit, setFocus, reset } = useForm()
+	const { register, handleSubmit, setFocus, reset, setValue } = useForm()
 	const {
 		fileSrc,
 		setFileSrc,
@@ -13,6 +13,7 @@ export default function UploadPublish({ tab }) {
 		setFileName,
 		isClearUpload,
 		setIsClearUpload,
+		isSubmit,
 		createClipAsync,
 		handleFile,
 		onCreate,
@@ -49,6 +50,7 @@ export default function UploadPublish({ tab }) {
 			setFileSrc('')
 			setFileName('Выберите файл')
 			setIsClearUpload(false)
+			setValue('key_phrase', sessionStorage.getItem('key_phrase'))
 		}
 	}, [isClearUpload])
 	useEffect(() => {
@@ -64,10 +66,9 @@ export default function UploadPublish({ tab }) {
 			>
 				{/* Название */}
 				<label className={styles.field}>
-					<h4 className={styles.field__title}>Title</h4>
+					<h4 className={styles.field__title}>Название</h4>
 					<input {...register('name')} type='text' autoComplete='off' />
 				</label>
-
 				{/* Срок действия */}
 				<div className={styles.period}>
 					<h4 className={styles.field__title}>Период действия</h4>
@@ -90,7 +91,6 @@ export default function UploadPublish({ tab }) {
 						autoComplete='off'
 					/>
 				</div>
-
 				{/* Файл */}
 				<label className={styles.media} onChange={e => handleFile(e)}>
 					<input {...register('media')} type='file' />
@@ -104,8 +104,15 @@ export default function UploadPublish({ tab }) {
 						</div>
 					</div>
 				</label>
+				{/* Код */}
+				<label className={styles.field}>
+					<h4 className={styles.field__title}>Кодовая фраза</h4>
+					<input {...register('key_phrase')} type='text' autoComplete='off' />
+				</label>
 
-				<button className={styles.submit}>Отправить</button>
+				<button className={styles.submit} disabled={isSubmit}>
+					Отправить
+				</button>
 			</form>
 		</Layout>
 	)

@@ -1,6 +1,5 @@
 @import '@/styles/vars';
 
-
 .stream {
 	&__container {
 		position: absolute;
@@ -24,14 +23,14 @@
 		position: relative;
 		z-index: +2;
 		opacity: 0;
-		transition: all .5s ease;
+		transition: all 0.5s ease;
 		&_show {
 			opacity: 1;
 		}
 	}
 }
-.form {	
-	margin: 30px ;
+.form {
+	margin: 30px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -66,7 +65,7 @@
 		font-size: 24px;
 		outline: none;
 		text-align: center;
-		transition: all .3s ease;
+		transition: all 0.3s ease;
 	}
 	input:focus {
 		border-color: $select;
@@ -81,18 +80,18 @@
 		color: $black;
 		font-size: 24px;
 		text-align: center;
-		transition: all .3s ease;
+		transition: all 0.3s ease;
 	}
-	input:nth-child(2) {		
+	input:nth-child(2) {
 		border-radius: $border-radius 0 0 $border-radius;
 		border: 3px solid $primary-base;
 		border-right: none;
 	}
-	input:nth-child(3) {		
+	input:nth-child(3) {
 		border: 3px solid $primary-base;
 	}
-	input:nth-child(4) {	
-		width: 150px;	
+	input:nth-child(4) {
+		width: 150px;
 		border-radius: 0 $border-radius $border-radius 0;
 		border: 3px solid $primary-base;
 		border-left: none;
@@ -106,10 +105,8 @@
 	input:focus {
 		border-color: $select;
 	}
-
 }
 .media {
-	margin-bottom: 40px;
 	max-width: 900px;
 	display: flex;
 	flex-direction: column;
@@ -123,21 +120,22 @@
 	}
 	input:focus {
 		& ~ .media__container,
-		& ~ .media__container > .media__caption  {
+		& ~ .media__container > .media__caption {
 			border-color: $select;
 		}
 	}
 	&:hover {
-		.media__container, .media__caption {
+		.media__container,
+		.media__caption {
 			border-color: $select;
 			background-color: $additional-dark-sm;
-		}		
+		}
 	}
 	&__container {
 		border-radius: $border-radius;
 		border: 3px solid $primary-base;
 		background-color: $primary-light;
-		transition: all .3s ease;
+		transition: all 0.3s ease;
 	}
 	&__image {
 		height: 400px;
@@ -159,7 +157,7 @@
 		border-top: 3px solid $primary-base;
 		position: relative;
 		z-index: +1;
-		transition: all .3s ease;
+		transition: all 0.3s ease;
 	}
 	&__fileName {
 		font-size: 24px;
@@ -167,17 +165,24 @@
 	}
 }
 .submit {
-	padding: 5px 20px;	
+	margin-top: 40px;
+	padding: 5px 20px;
 	background-color: $primary-light;
 	border-radius: $border-radius;
 	border: 3px solid $primary-base;
 	font-size: 32px;
-	transition: all .3s ease;
+	transition: all 0.3s ease;
 	&:hover {
 		border-color: $select;
 		background-color: $additional-dark-sm;
 	}
 	&:focus {
 		border-color: $select;
+	}
+	&:disabled {
+		border-color: $select;
+		background-color: $additional-dark-sm;
+		opacity: 0.4;
+		cursor: not-allowed;
 	}
 }
