@@ -57,12 +57,11 @@ export default function usePublish() {
 	}
 	// Функция для создания клипа и отправки запроса
 	const onCreate = data => {
-		sessionStorage.setItem('key_phrase', data['key_phrase'])
+		localStorage.setItem('cypher', data['cypher'])
 		data = {
 			...data,
 			expiration_date: `${data['year']}-${data['month']}-${data['day']}`,
 			media: data['media'][0],
-			// key: aesEncrypt(data['key_phrase']),
 		}
 		// console.log(data)
 		setIsSubmit(true)

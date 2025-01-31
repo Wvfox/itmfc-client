@@ -50,10 +50,11 @@ export default function UploadPublish({ tab }) {
 			setFileSrc('')
 			setFileName('Выберите файл')
 			setIsClearUpload(false)
-			setValue('key_phrase', sessionStorage.getItem('key_phrase'))
+			setValue('cypher', localStorage.getItem('cypher'))
 		}
 	}, [isClearUpload])
 	useEffect(() => {
+		setValue('cypher', localStorage.getItem('cypher'))
 		setFocus('name')
 	}, [])
 
@@ -107,7 +108,7 @@ export default function UploadPublish({ tab }) {
 				{/* Код */}
 				<label className={styles.field}>
 					<h4 className={styles.field__title}>Кодовая фраза</h4>
-					<input {...register('key_phrase')} type='text' autoComplete='off' />
+					<input {...register('cypher')} type='text' autoComplete='off' />
 				</label>
 
 				<button className={styles.submit} disabled={isSubmit}>
