@@ -6,7 +6,8 @@ $gray-light-base: lighten($gray, 40%);
 $gray-light-lg: lighten($gray, 70%);
 
 $primary-base: #f58b00;
-$primary-light: lighten($primary-base, 49%);
+$primary-light-sm: lighten($primary-base, 39%);
+$primary-light-base: lighten($primary-base, 49%);
 $select: #472901;
 $additional-base: #fffdfa;
 $additional-light-base: lighten($additional-base, 10%);

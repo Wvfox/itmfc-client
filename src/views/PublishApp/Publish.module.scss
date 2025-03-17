@@ -58,7 +58,7 @@
 	input {
 		width: 700px;
 		padding: 5px;
-		background-color: $primary-light;
+		background-color: $primary-light-base;
 		border-radius: $border-radius;
 		border: 3px solid $primary-base;
 		color: $black;
@@ -75,7 +75,7 @@
 	input {
 		width: 100px;
 		padding: 5px;
-		background-color: $primary-light;
+		background-color: $primary-light-base;
 		outline: none;
 		color: $black;
 		font-size: 24px;
@@ -134,7 +134,7 @@
 	&__container {
 		border-radius: $border-radius;
 		border: 3px solid $primary-base;
-		background-color: $primary-light;
+		background-color: $primary-light-base;
 		transition: all 0.3s ease;
 	}
 	&__image {
@@ -142,7 +142,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: $primary-light;
+		background-color: $primary-light-base;
 		video {
 			height: 100%;
 		}
@@ -167,7 +167,7 @@
 .submit {
 	margin-top: 40px;
 	padding: 5px 20px;
-	background-color: $primary-light;
+	background-color: $primary-light-base;
 	border-radius: $border-radius;
 	border: 3px solid $primary-base;
 	font-size: 32px;

@@ -1,0 +1,36 @@
+@import '@/styles/vars';
+@import '@/styles/mixin';
+
+.control {
+}
+.header {
+	margin: 0 0 20px 0;
+	display: flex;
+	flex-wrap: wrap;
+	&__item {
+		flex: 1 0 25%;
+		padding: 15px;
+		background-color: $primary-light-base;
+		border: 2px solid $primary-base;
+		border-left-width: 1px;
+		border-right-width: 1px;
+		transition: all 0.3s ease;
+		&_active {
+			background-color: $primary-light-sm;
+			color: $select;
+		}
+		&:hover {
+			background-color: $primary-light-sm;
+		}
+	}
+	&__item:first-child {
+		border-left-width: 2px;
+	}
+	&__item:last-child {
+		border-right-width: 2px;
+	}
+	&__title {
+		@include unselectable;
+		font-size: 24px;
+	}
+}
