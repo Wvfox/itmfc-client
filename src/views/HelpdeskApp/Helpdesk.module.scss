@@ -40,9 +40,9 @@
 		background-color: rgba($additional-dark-base, 0.1);
 		transition: all 0.3s ease;
 		&:hover {
-			border-color: $select;
+			border-color: $select-base;
 			background-color: rgba($additional-dark-base, 0.5);
-			color: $select;
+			color: $select-base;
 		}
 	}
 }

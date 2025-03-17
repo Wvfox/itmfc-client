@@ -44,7 +44,7 @@
 	cursor: pointer;
 	&:hover {
 		input {
-			border-color: $select;
+			border-color: $select-base;
 			background-color: $additional-dark-sm;
 		}
 	}
@@ -68,7 +68,7 @@
 		transition: all 0.3s ease;
 	}
 	input:focus {
-		border-color: $select;
+		border-color: $select-base;
 	}
 }
 .period {
@@ -98,12 +98,12 @@
 	}
 	&:hover {
 		input {
-			border-color: $select;
+			border-color: $select-base;
 			background-color: $additional-dark-sm;
 		}
 	}
 	input:focus {
-		border-color: $select;
+		border-color: $select-base;
 	}
 }
 .media {
@@ -121,13 +121,13 @@
 	input:focus {
 		& ~ .media__container,
 		& ~ .media__container > .media__caption {
-			border-color: $select;
+			border-color: $select-base;
 		}
 	}
 	&:hover {
 		.media__container,
 		.media__caption {
-			border-color: $select;
+			border-color: $select-base;
 			background-color: $additional-dark-sm;
 		}
 	}
@@ -173,14 +173,14 @@
 	font-size: 32px;
 	transition: all 0.3s ease;
 	&:hover {
-		border-color: $select;
+		border-color: $select-base;
 		background-color: $additional-dark-sm;
 	}
 	&:focus {
-		border-color: $select;
+		border-color: $select-base;
 	}
 	&:disabled {
-		border-color: $select;
+		border-color: $select-base;
 		background-color: $additional-dark-sm;
 		opacity: 0.4;
 		cursor: not-allowed;

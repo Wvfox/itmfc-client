@@ -2,6 +2,9 @@ import cn from 'classnames'
 import { useState } from 'react'
 import Layout from 'shared/Layout/Layout'
 import QueryDataStatus from 'utils/QueryData/queryDataStatus'
+import OperatorControl from './components/Operator'
+import PrinterControl from './components/Printer'
+import WorkstationControl from './components/Workstation'
 import styles from './Control.module.scss'
 import useControl from './useControl'
 
@@ -9,7 +12,7 @@ const headerControl = [
 	{
 		id: 1,
 		title: 'Сотрудники',
-		section: 'personal',
+		section: 'operator',
 	},
 	{
 		id: 2,
@@ -29,10 +32,9 @@ const headerControl = [
 ]
 
 export default function ControlView({ tab }) {
-	const { queryDataPersonal } = useControl()
+	const { queryDataPersonal, queryDataWorkstation, queryDataPrinter } =
+		useControl()
 	const [currentSection, setCurrentSection] = useState()
-
-	console.log(queryDataPersonal)
 
 	return (
 		<Layout tab={tab} title='Панель управления'>
@@ -50,12 +52,34 @@ export default function ControlView({ tab }) {
 						</div>
 					))}
 				</div>
-				<div className={cn(styles.control__container)}>
-					{QueryDataStatus(queryDataPersonal) ? (
-						queryDataPersonal.data?.map(elem => elem.name)
-					) : (
-						<></>
-					)}
+				<div className={cn(styles.control__container, styles.list)}>
+					{/* === Operator === */}
+					{currentSection === 'operator' &&
+						(QueryDataStatus(queryDataPersonal) ? (
+							queryDataPersonal.data?.map(elem => (
+								<OperatorControl key={elem.id} operator={elem} />
+							))
+						) : (
+							<>2</>
+						))}
+					{/* === Workstation === */}
+					{currentSection === 'workstation' &&
+						(QueryDataStatus(queryDataWorkstation) ? (
+							queryDataWorkstation.data?.map(elem => (
+								<WorkstationControl key={elem.id} workstation={elem} />
+							))
+						) : (
+							<>2</>
+						))}
+					{/* === Printer === */}
+					{currentSection === 'printer' &&
+						(QueryDataStatus(queryDataPrinter) ? (
+							queryDataPrinter.data?.map(elem => (
+								<PrinterControl key={elem.id} printer={elem} />
+							))
+						) : (
+							<>2</>
+						))}
 				</div>
 			</div>
 		</Layout>

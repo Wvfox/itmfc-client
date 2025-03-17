@@ -4,9 +4,19 @@
 .control {
 }
 .header {
-	margin: 0 0 20px 0;
+	margin: 0 20px 40px 20px;
 	display: flex;
 	flex-wrap: wrap;
+	position: relative;
+	&::after {
+		content: '';
+		height: 4px;
+		background-color: $primary-base;
+		position: absolute;
+		left: -26px;
+		right: -24px;
+		bottom: -22px;
+	}
 	&__item {
 		flex: 1 0 25%;
 		padding: 15px;
@@ -17,7 +27,7 @@
 		transition: all 0.3s ease;
 		&_active {
 			background-color: $primary-light-sm;
-			color: $select;
+			color: $select-base;
 		}
 		&:hover {
 			background-color: $primary-light-sm;
@@ -32,5 +42,73 @@
 	&__title {
 		@include unselectable;
 		font-size: 24px;
+	}
+}
+.list {
+	padding: 0 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	&__container {
+		display: flex;
+		flex-direction: column;
+		border-radius: 10px;
+		border: 2px solid $primary-base;
+		background-color: $primary-light-base;
+	}
+	&__row {
+		display: flex;
+		&_buttons {
+			padding: 15px;
+			justify-content: center;
+			gap: 80px;
+		}
+	}
+	&__row:not(:last-child) {
+		border-bottom: 2px solid $primary-base;
+	}
+	&__item {
+		padding: 5px;
+		flex: 0 0 25%;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		&_double {
+			flex: 1 0 50%;
+			gap: 15px;
+		}
+		&_header {
+			flex: 1 0 100%;
+			justify-content: center;
+		}
+	}
+	&__item:not(:last-child) {
+		border-right: 2px solid $primary-base;
+	}
+	&__caption {
+		font-size: 20px;
+		color: $select-light-sm;
+	}
+	&__value {
+		font-size: 24px;
+		&_header {
+			font-size: 32px;
+			color: $select-dark-base;
+		}
+	}
+	&__btn {
+		min-width: 150px;
+		font-size: 22px;
+		padding: 7px 30px;
+		color: $select-light-sm;
+		border: 2px solid $select-light-sm;
+		border-radius: 20px;
+		background-color: $primary-light-sm;
+		opacity: 0.9;
+		transition: all 0.3s ease;
+		&:hover {
+			opacity: 1;
+			background-color: $primary-light-xs;
+		}
 	}
 }
