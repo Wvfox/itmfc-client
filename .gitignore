@@ -7,6 +7,7 @@
 **/.next
 **/.idea
 **/kiosk.**
+**/compilation
 
 **/public/clips/*.*
 **/public/clip-to-download/*.*
