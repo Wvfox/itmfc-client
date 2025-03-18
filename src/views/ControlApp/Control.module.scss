@@ -58,6 +58,9 @@
 	}
 	&__row {
 		display: flex;
+		&_wrap {
+			flex-wrap: wrap;
+		}
 		&_buttons {
 			padding: 15px;
 			justify-content: center;
@@ -77,6 +80,14 @@
 			flex: 1 0 50%;
 			gap: 15px;
 		}
+		&_third {
+			padding: 0;
+			flex: 1 0 33%;
+			gap: 10px;
+		}
+		&_full {
+			flex: 1 1 100%;
+		}
 		&_header {
 			flex: 1 0 100%;
 			justify-content: center;
@@ -88,12 +99,32 @@
 	&__caption {
 		font-size: 20px;
 		color: $select-light-sm;
+		&_subtitle {
+			font-size: 28px;
+		}
+		&_center {
+			width: 100%;
+			text-align: center;
+		}
+		&_third {
+			padding: 5px;
+			height: 100%;
+			min-width: 140px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			border-right: 2px solid $primary-base;
+		}
 	}
 	&__value {
 		font-size: 24px;
 		&_header {
 			font-size: 32px;
 			color: $select-dark-base;
+		}
+		&_third {
+			padding: 5px;
+			font-size: 20px;
 		}
 	}
 	&__btn {

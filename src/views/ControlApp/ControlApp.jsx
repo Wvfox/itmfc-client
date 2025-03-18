@@ -2,6 +2,7 @@ import cn from 'classnames'
 import { useState } from 'react'
 import Layout from 'shared/Layout/Layout'
 import QueryDataStatus from 'utils/QueryData/queryDataStatus'
+import ApiControl from './components/Api'
 import OperatorControl from './components/Operator'
 import PrinterControl from './components/Printer'
 import WorkstationControl from './components/Workstation'
@@ -80,6 +81,8 @@ export default function ControlView({ tab }) {
 						) : (
 							<>2</>
 						))}
+					{/* === Printer === */}
+					{currentSection === 'api' && <ApiControl />}
 				</div>
 			</div>
 			<label style={{ border: '2px solid #000' }}>
