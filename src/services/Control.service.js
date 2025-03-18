@@ -28,8 +28,10 @@ export const ControlService = {
 	},
 	async getAllPrinters() {
 		return axios
-			.patch(`${SERVER_URL}/personal/printer/alt`, {
-				cypher: 'i5aJTxYJKTKPGxOM8VNPTw==',
+			.get(`${SERVER_URL}/personal/printer`, {
+				headers: {
+					Token: 'i5aJTxYJKTKPGxOM8VNPTw==',
+				},
 			})
 			.then(response => {
 				return response
