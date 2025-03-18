@@ -82,6 +82,16 @@ export default function ControlView({ tab }) {
 						))}
 				</div>
 			</div>
+			<label style={{ border: '2px solid #000' }}>
+				<input id='test' type='text' style={{ outline: 'none' }} />
+			</label>
+			<button
+				onClick={() => {
+					localStorage.setItem('AUS', document.querySelector('#test').value)
+				}}
+			>
+				ADD
+			</button>
 		</Layout>
 	)
 }

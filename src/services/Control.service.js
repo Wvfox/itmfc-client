@@ -5,7 +5,7 @@ export const ControlService = {
 	async getAllOperators() {
 		return axios
 			.patch(`${SERVER_URL}/personal/operator/alt`, {
-				cypher: 'i5aJTxYJKTKPGxOM8VNPTw==',
+				cypher: localStorage.AUS,
 			})
 			.then(response => {
 				return response
@@ -17,7 +17,7 @@ export const ControlService = {
 	async getAllWorkstations() {
 		return axios
 			.patch(`${SERVER_URL}/personal/workstation/alt`, {
-				cypher: 'i5aJTxYJKTKPGxOM8VNPTw==',
+				cypher: localStorage.AUS,
 			})
 			.then(response => {
 				return response
@@ -28,10 +28,8 @@ export const ControlService = {
 	},
 	async getAllPrinters() {
 		return axios
-			.get(`${SERVER_URL}/personal/printer`, {
-				headers: {
-					Token: 'i5aJTxYJKTKPGxOM8VNPTw==',
-				},
+			.patch(`${SERVER_URL}/personal/printer/alt`, {
+				cypher: localStorage.AUS,
 			})
 			.then(response => {
 				return response
