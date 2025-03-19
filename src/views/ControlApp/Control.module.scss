@@ -96,6 +96,9 @@
 	&__item:not(:last-child) {
 		border-right: 2px solid $primary-base;
 	}
+	&__item_third:nth-child(3n) {
+		border-right: none;
+	}
 	&__caption {
 		font-size: 20px;
 		color: $select-light-sm;
@@ -118,6 +121,7 @@
 	}
 	&__value {
 		font-size: 24px;
+		white-space: pre-wrap;
 		&_header {
 			font-size: 32px;
 			color: $select-dark-base;
