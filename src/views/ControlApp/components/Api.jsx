@@ -429,7 +429,7 @@ const apiData = [
 		],
 	},
 	{
-		title: 'Локаций (Location)',
+		title: 'Локации (Location)',
 		fields: [
 			{
 				field: 'name',
