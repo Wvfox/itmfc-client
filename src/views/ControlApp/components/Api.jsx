@@ -32,7 +32,7 @@ const apiData = [
 				description: 'Мобильный телефон (не обязательное)',
 			},
 			{
-				field: 'Email',
+				field: 'email',
 				description: 'Электронная почта (не обязательное)',
 			},
 			{
