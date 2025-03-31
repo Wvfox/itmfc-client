@@ -28,6 +28,14 @@ const apiData = [
 				description: 'Дата дня рождения (не обязательное)',
 			},
 			{
+				field: 'telephone',
+				description: 'Мобильный телефон (не обязательное)',
+			},
+			{
+				field: 'Email',
+				description: 'Электронная почта (не обязательное)',
+			},
+			{
 				field: 'is_head',
 				description: 'Сотрудник глава да/нет (по умолчанию - нет)',
 			},
@@ -42,6 +50,10 @@ const apiData = [
 			{
 				field: 'date_ecp',
 				description: 'Дата окончания ЭЦП (не обязательное)',
+			},
+			{
+				field: '',
+				description: '',
 			},
 			{
 				field: 'updated_at',
