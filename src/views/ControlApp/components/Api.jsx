@@ -192,10 +192,6 @@ const apiData = [
 				field: '',
 				description: '',
 			},
-			{
-				field: '',
-				description: '',
-			},
 		],
 		urls: [
 			{
@@ -514,16 +510,21 @@ export default function ApiControl({}) {
 					<ul className={cn(styles.list__row, styles.list__row_wrap)}>
 						{section.fields.map(elem => (
 							<li
+								key={elem.field}
 								className={cn(
 									styles.list__item,
 									styles.list__item_wrap,
-									styles.list__item_third
+									styles.list__item_third,
+									{ [styles.list__item_third_mob]: elem.field }
 								)}
 							>
 								<h5
 									className={cn(
 										styles.list__caption,
-										styles.list__caption_third
+										styles.list__caption_third,
+										{
+											[styles.list__caption_third_mob]: elem.field,
+										}
 									)}
 								>
 									{elem.field}
@@ -549,7 +550,7 @@ export default function ApiControl({}) {
 						</li>
 					</ul>
 					{section.urls.map(elem => (
-						<ul className={styles.list__row}>
+						<ul key={elem.url} className={styles.list__row}>
 							<li className={cn(styles.list__item, styles.list__item_third)}>
 								<h5
 									className={cn(

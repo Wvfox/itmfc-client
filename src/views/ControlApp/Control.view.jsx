@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Layout from 'shared/Layout/Layout'
 import QueryDataStatus from 'utils/QueryData/queryDataStatus'
 import ApiControl from './components/Api'
+import AuthControl from './components/Auth'
 import OperatorControl from './components/Operator'
 import PrinterControl from './components/Printer'
 import WorkstationControl from './components/Workstation'
@@ -61,7 +62,7 @@ export default function ControlView({ tab }) {
 								<OperatorControl key={elem.id} operator={elem} />
 							))
 						) : (
-							<>2</>
+							<AuthControl />
 						))}
 					{/* === Workstation === */}
 					{currentSection === 'workstation' &&
@@ -70,7 +71,7 @@ export default function ControlView({ tab }) {
 								<WorkstationControl key={elem.id} workstation={elem} />
 							))
 						) : (
-							<>2</>
+							<AuthControl />
 						))}
 					{/* === Printer === */}
 					{currentSection === 'printer' &&
@@ -79,22 +80,22 @@ export default function ControlView({ tab }) {
 								<PrinterControl key={elem.id} printer={elem} />
 							))
 						) : (
-							<>2</>
+							<AuthControl />
 						))}
 					{/* === Printer === */}
 					{currentSection === 'api' && <ApiControl />}
 				</div>
 			</div>
-			<label style={{ border: '2px solid #000' }}>
+			{/* <label style={{ border: '2px solid #000' }}>
 				<input id='test' type='text' style={{ outline: 'none' }} />
-			</label>
-			<button
+			</label> */}
+			{/* <button
 				onClick={() => {
 					localStorage.setItem('AUS', document.querySelector('#test').value)
 				}}
 			>
 				ADD
-			</button>
+			</button> */}
 		</Layout>
 	)
 }
