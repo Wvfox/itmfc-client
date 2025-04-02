@@ -195,6 +195,9 @@
 		font-size: 32px;
 		display: flex;
 		justify-content: center;
+		@media (max-width: 1200px) {
+			font-size: 24px;
+		}
 	}
 	&__label {
 		padding: 15px 100px;
@@ -202,11 +205,21 @@
 		flex-direction: column;
 		justify-content: center;
 		gap: 20px;
+		@media (max-width: 1200px) {
+			padding: 10px;
+		}
 		input {
 			padding: 5px;
 			width: 500px;
 			font-size: 24px;
 			border: 2px solid $primary-base;
+			@media (max-width: 1200px) {
+				font-size: 20px;
+				width: auto;
+			}
+			@media (max-width: 800px) {
+				font-size: 16px;
+			}
 		}
 	}
 	&__button {
