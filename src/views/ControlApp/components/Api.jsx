@@ -481,6 +481,61 @@ const apiData = [
 			},
 		],
 	},
+	{
+		title: 'Гости (Guest)',
+		fields: [
+			{
+				field: 'first_name ',
+				description: 'Имя гостя (не обязательное)',
+			},
+			{
+				field: 'last_name',
+				description: 'Фамилия гостя (не обязательное)',
+			},
+			{
+				field: 'user_tag',
+				description:
+					'Тэг пользователя в телеграмме (уникальное, не обязательное)',
+			},
+			{
+				field: 'user_id',
+				description:
+					'Айди пользователя в телеграмме (уникальное, не обязательное)',
+			},
+			{
+				field: 'group_id',
+				description: 'Айди группы телеграмма (не обязательное)',
+			},
+			{
+				field: 'is_check',
+				description: 'Статус проверки (не обязательное)',
+			},
+			{
+				field: 'updated_at',
+				description: 'Дата обновления записи (создается автоматически)',
+			},
+			{
+				field: 'created_at',
+				description: 'Дата создания записи (создается автоматически)',
+			},
+		],
+		urls: [
+			{
+				url: `api/personal/guest`,
+				description:
+					'GET - Получение массива ВСЕХ гостей\nPOST - Создание новой записи гостя',
+			},
+			{
+				url: `api/personal/guest/<id>`,
+				description:
+					'GET - Получение записи гостя\nPUT - Редактирование записи гостя\nDEL - Удаление записи гостя',
+			},
+			{
+				url: `api/personal/guest/check/<user_id>`,
+				description: 'PUT - изменение статуса is_check на True',
+			},
+		],
+	},
 ]
 
 export default function ApiControl({}) {
