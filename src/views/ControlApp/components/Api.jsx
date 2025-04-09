@@ -518,6 +518,10 @@ const apiData = [
 				field: 'created_at',
 				description: 'Дата создания записи (создается автоматически)',
 			},
+			{
+				field: '',
+				description: '',
+			},
 		],
 		urls: [
 			{
