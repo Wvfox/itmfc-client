@@ -1,0 +1,22 @@
+$white: #fff;
+$black: #000;
+$gray: #333333;
+$gray-light-sm: lighten($gray, 30%);
+$gray-light-base: lighten($gray, 40%);
+$gray-light-lg: lighten($gray, 70%);
+
+$primary-base: #f58b00;
+$primary-light-xs: lighten($primary-base, 30%);
+$primary-light-sm: lighten($primary-base, 39%);
+$primary-light-base: lighten($primary-base, 49%);
+$additional-base: #fffdfa;
+$additional-light-base: lighten($additional-base, 10%);
+$additional-dark-sm: darken($additional-base, 12%);
+$additional-dark-base: darken($additional-base, 30%);
+
+$select-base: #472901;
+$select-light-sm: lighten($select-base, 5%);
+$select-light-base: lighten($select-base, 10%);
+$select-dark-base: darken($select-base, 2%);
+
+$border-radius: 6px;
