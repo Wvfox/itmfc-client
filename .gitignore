@@ -8,6 +8,7 @@
 **/.idea
 **/kiosk.**
 **/compilation
+**/out
 
 **/public/clips/*.*
 **/public/clip-to-download/*.*
