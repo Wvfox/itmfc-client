@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import Layout from 'shared/Layout/Layout'
+import { handleInputOnlyNumber } from 'utils/handleInput/handleInput'
 import styles from '../Publish.module.scss'
 import usePublish from '../usePublish'
 
@@ -91,6 +92,16 @@ export default function UploadPublish({ tab }) {
 						autoComplete='off'
 					/>
 				</div>
+				{/* Продолжительность */}
+				<label className={styles.field}>
+					<h4 className={styles.field__title}>Продолжительность</h4>
+					<input
+						{...register('duration')}
+						type='text'
+						autoComplete='off'
+						onChange={event => handleInputOnlyNumber(event)}
+					/>
+				</label>
 				{/* Файл */}
 				<label className={styles.media} onChange={e => handleFile(e)}>
 					<input {...register('media')} type='file' />

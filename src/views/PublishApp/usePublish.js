@@ -60,6 +60,7 @@ export default function usePublish() {
 	const onCreate = data => {
 		localStorage.setItem('cypher', data['cypher'])
 		data['cypher'] = encrypt_aes(data['cypher'])
+		data['duration'] = Number(data['duration']) + 2
 		data = {
 			...data,
 			expiration_date: `${data['year']}-${data['month']}-${data['day']}`,
