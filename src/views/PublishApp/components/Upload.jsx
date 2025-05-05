@@ -14,7 +14,6 @@ export default function UploadPublish({ tab }) {
 		isClearUpload,
 		setIsClearUpload,
 		isSubmit,
-		createClipAsync,
 		handleFile,
 		onCreate,
 	} = usePublish()

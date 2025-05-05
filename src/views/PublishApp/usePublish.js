@@ -3,6 +3,7 @@ import { useMutation } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 import { PublishService } from 'services/Publish.service'
 import { checkResponseStatus } from 'utils/checkResponse'
+import { encrypt_aes } from 'utils/Cypher/cypher'
 
 export default function usePublish() {
 	const [fileSrc, setFileSrc] = useState('')
@@ -58,6 +59,7 @@ export default function usePublish() {
 	// Функция для создания клипа и отправки запроса
 	const onCreate = data => {
 		localStorage.setItem('cypher', data['cypher'])
+		data['cypher'] = encrypt_aes(data['cypher'])
 		data = {
 			...data,
 			expiration_date: `${data['year']}-${data['month']}-${data['day']}`,
