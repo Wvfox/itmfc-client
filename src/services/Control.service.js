@@ -1,11 +1,12 @@
 import axios from 'axios'
 import { SERVER_URL } from 'config/constants'
+import { encrypt_aes } from 'utils/Cypher/cypher'
 
 export const ControlService = {
 	async getAllOperators() {
 		return axios
 			.patch(`${SERVER_URL}/personal/operator/alt`, {
-				cypher: localStorage.AUS,
+				cypher: encrypt_aes(localStorage.AUS),
 			})
 			.then(response => {
 				return response
@@ -17,7 +18,7 @@ export const ControlService = {
 	async getAllWorkstations() {
 		return axios
 			.patch(`${SERVER_URL}/personal/workstation/alt`, {
-				cypher: localStorage.AUS,
+				cypher: encrypt_aes(localStorage.AUS),
 			})
 			.then(response => {
 				return response
@@ -29,7 +30,7 @@ export const ControlService = {
 	async getAllPrinters() {
 		return axios
 			.patch(`${SERVER_URL}/personal/printer/alt`, {
-				cypher: localStorage.AUS,
+				cypher: encrypt_aes(localStorage.AUS),
 			})
 			.then(response => {
 				return response
