@@ -6,7 +6,7 @@ const PUBLISH_URL = `${SERVER_URL}/publish`
 export const PublishService = {
 	async getAllClips() {
 		return axios
-			.get(`${PUBLISH_URL}/`)
+			.get(`${PUBLISH_URL}/list`)
 			.then(response => {
 				return response
 			})
@@ -36,7 +36,7 @@ export const PublishService = {
 	},
 	async createClip(data) {
 		return axios
-			.post(`${PUBLISH_URL}/`, data, {
+			.post(`${PUBLISH_URL}/list`, data, {
 				headers: {
 					'Content-Type': 'multipart/form-data',
 				},
