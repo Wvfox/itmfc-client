@@ -540,6 +540,94 @@ const apiData = [
 			},
 		],
 	},
+	{
+		title: 'Антиспам словарь (AntispamDictionary)',
+		fields: [
+			{
+				field: 'word',
+				description: 'Слово или фраза (обязательное)',
+			},
+			{
+				field: 'value',
+				description: 'Числовое значение слова (обязательное)',
+			},
+			{
+				field: 'updated_at',
+				description: 'Дата обновления записи (создается автоматически)',
+			},
+			{
+				field: 'created_at',
+				description: 'Дата создания записи (создается автоматически)',
+			},
+			{
+				field: '',
+				description: '',
+			},
+			{
+				field: '',
+				description: '',
+			},
+		],
+		urls: [
+			{
+				url: `api/antispam/dictionary`,
+				description:
+					'GET - Получение ВСЕХ записей слов\nPOST - Создание новой записи слова',
+			},
+			{
+				url: `api/antispam/dictionary/check`,
+				description: 'PATCH - Получение записи слова',
+			},
+		],
+	},
+	{
+		title: 'Логи публичного чата (PublicChatLog)',
+		fields: [
+			{
+				field: 'username',
+				description: 'Тег или ФИО пользователя (обязательное)',
+			},
+			{
+				field: 'full_time',
+				description: 'Числовое значение времени отправки (обязательное)',
+			},
+			{
+				field: 'text',
+				description: 'Текст сообщения (обязательное)',
+			},
+			{
+				field: 'chat_id',
+				description: 'Айди чата, откуда сообщение (обязательное)',
+			},
+			{
+				field: 'msg_id',
+				description: 'Айди сообщения (обязательное)',
+			},
+			{
+				field: 'user_id',
+				description: 'Айди пользователя отправителя сообщения (обязательное)',
+			},
+			{
+				field: 'sum_spam',
+				description: 'Сумма балов анти-спама сообщения (обязательное)',
+			},
+			{
+				field: 'updated_at',
+				description: 'Дата обновления записи (создается автоматически)',
+			},
+			{
+				field: 'created_at',
+				description: 'Дата создания записи (создается автоматически)',
+			},
+		],
+		urls: [
+			{
+				url: `api/antispam/log`,
+				description:
+					'GET - Получение ВСЕХ записей логов\nPOST - Создание новой записи лога',
+			},
+		],
+	},
 ]
 
 export default function ApiControl({}) {
